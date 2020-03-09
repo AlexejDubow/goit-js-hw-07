@@ -39,7 +39,7 @@ function createColor() {
 }
 
 function createBoxes(amount) {
-  let divs = document.createElement("div");
+  let divCollection = [];
   for (let i = 0; i < amount; i += 1) {
     startWidth = startWidth + 10;
     startHeight = startHeight + 10;
@@ -47,30 +47,13 @@ function createBoxes(amount) {
     newDiv.style.width = `${startWidth}px`;
     newDiv.style.height = `${startHeight}px`;
     newDiv.style.backgroundColor = `${createColor()}`;
-    divs.append(newDiv);
+    divCollection.push(newDiv);
   }
-  return divs;
+  return divCollection;
 }
 
-// function createBoxes(amount) {
-//   let newDiv;
-//   // let divs = document.createElement("div");
-//   for (let i = 0; i < amount; i += 1) {
-//     startWidth = startWidth + 10;
-//     startHeight = startHeight + 10;
-//     newDiv = document.createElement("div");
-//     newDiv.style.width = `${startWidth}px`;
-//     newDiv.style.height = `${startHeight}px`;
-//     newDiv.style.backgroundColor = `${createColor()}`;
-//   //   // divs.append(newDiv);
-//   }
-//   return newDiv;
-// }
-
-
-
 function appendBoxes() {
-  divBoxes.append(createBoxes(inputAmount.value));
+  divBoxes.append(...createBoxes(inputAmount.value));
 }
 
 function destroyBoxes() {
