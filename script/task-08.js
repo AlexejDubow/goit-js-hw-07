@@ -11,22 +11,10 @@
 // Каждый следующий div после первого, должен быть шире и выше предыдущего на 10px
 // Создай функцию destroyBoxes(), которая очищает div#boxes.
 
-// {/* <div id="controls"> */}
-// <input type="number" min="0" max="100" step="1" />
-// <button type="button" data-action="render">Создать</button>
-// <button type="button" data-action="destroy">Очистить</button>
-// </div>
-
 const divBoxes = document.getElementById("boxes");
 const inputRender = document.querySelector('[data-action="render"]');
 const inputDestroy = document.querySelector('[data-action="destroy"]');
 const inputAmount = document.querySelector('#controls > [type="number"]');
-let startWidth = 20;
-let startHeight = 20;
-
-// let amount = Number(inputAmount.value);
-// inputAmount.value = 4;
-// console.log(inputAmount.value);
 
 inputDestroy.addEventListener("click", destroyBoxes);
 inputRender.addEventListener("click", appendBoxes);
@@ -40,9 +28,13 @@ function createColor() {
 
 function createBoxes(amount) {
   let divCollection = [];
+  let startWidth = 20;
+  let startHeight = 20;
+
   for (let i = 0; i < amount; i += 1) {
-    startWidth = startWidth + 10;
-    startHeight = startHeight + 10;
+    startWidth += 10;
+    startHeight += 10;
+
     const newDiv = document.createElement("div");
     newDiv.style.width = `${startWidth}px`;
     newDiv.style.height = `${startHeight}px`;
@@ -53,7 +45,9 @@ function createBoxes(amount) {
 }
 
 function appendBoxes() {
-  divBoxes.append(...createBoxes(inputAmount.value));
+  if ((inputAmount.value >= 0) & (inputAmount.value <= 100)) {
+    divBoxes.append(...createBoxes(inputAmount.value));
+  }
 }
 
 function destroyBoxes() {
