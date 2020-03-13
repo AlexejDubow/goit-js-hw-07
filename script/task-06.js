@@ -10,12 +10,12 @@ const input = document.getElementById("validation-input");
 function fn() {
   // console.log(input.value.length);
   // console.log(input.dataset.length)
+    input.classList.add("invalid");
+    input.classList.remove("valid");
   if (input.value.length === Number(input.dataset.length)) {
     input.classList.add("valid");
     input.classList.remove("invalid");
-  } else {
-    input.classList.add("invalid");
-    input.classList.remove("valid");
-  }
+  } 
+  
 }
 input.addEventListener("blur", fn);

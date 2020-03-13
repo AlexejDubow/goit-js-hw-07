@@ -45,7 +45,7 @@ function createBoxes(amount) {
 }
 
 function appendBoxes() {
-  if ((inputAmount.value >= 0) & (inputAmount.value <= 100)) {
+  if ((inputAmount.value >= inputAmount.min) & (inputAmount.value <= inputAmount.max)) {
     divBoxes.append(...createBoxes(inputAmount.value));
   }
 }
