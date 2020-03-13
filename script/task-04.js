@@ -20,11 +20,8 @@ btnAddCounter.addEventListener("click", addCounter);
 btnDecCounter.addEventListener("click", decCounter);
 
 function addCounter() {
-  counterValue += 1;
-
-  counter.textContent = counterValue;
+  counter.textContent = counterValue += 1;
 }
 function decCounter() {
-  counterValue -= 1;
-  counter.textContent = counterValue;
+  counter.textContent = counterValue -= 1;
 }
