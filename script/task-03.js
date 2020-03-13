@@ -24,11 +24,7 @@ const images = [
   }
 ];
 
-images.map((item) => {
-  const content = `<img src="${item.url}" alt="${item.alt}" width="30%" height="auto">`;
-  const gallery = document.querySelector("#gallery");
-  gallery.style.display = "flex";
-  gallery.style.justifyContent = "space-between";
-  gallery.style.padding = "0";
-  gallery.insertAdjacentHTML("beforeend", content);
-});
+const createImageList = images.reduce((acc, item) => acc + `<li><img src="${item.url}" alt="${item.alt}" width="30%" height="auto"></li>`, '');
+
+const gallery = document.querySelector("#gallery");
+gallery.insertAdjacentHTML("beforeend", createImageList);
