@@ -14,6 +14,9 @@
 const divBoxes = document.getElementById("boxes");
 const inputRender = document.querySelector('[data-action="render"]');
 const inputDestroy = document.querySelector('[data-action="destroy"]');
+// console.log(inputRender)
+// console.log(inputDestroy)
+
 const inputAmount = document.querySelector('#controls > [type="number"]');
 
 inputDestroy.addEventListener("click", destroyBoxes);
@@ -32,12 +35,12 @@ function createBoxes(amount) {
   let startHeight = 20;
 
   for (let i = 0; i < amount; i += 1) {
-    startWidth += 10;
-    startHeight += 10;
+    // startWidth += 10;
+    // startHeight += 10;
 
     const newDiv = document.createElement("div");
-    newDiv.style.width = `${startWidth}px`;
-    newDiv.style.height = `${startHeight}px`;
+    newDiv.style.width = `${(startWidth += 10)}px`;
+    newDiv.style.height = `${(startHeight += 10)}px`;
     newDiv.style.backgroundColor = `${createColor()}`;
     divCollection.push(newDiv);
   }
@@ -45,7 +48,17 @@ function createBoxes(amount) {
 }
 
 function appendBoxes() {
-  if ((inputAmount.value >= inputAmount.min) & (inputAmount.value <= inputAmount.max)) {
+  // console.log(inputAmount.value)
+  // console.log(inputAmount.max)
+  // console.log(inputAmount.min)
+
+  // if (
+  //   inputAmount.value >= inputAmount.min &&
+  //   inputAmount.value <= inputAmount.max
+  // ) {
+  //   divBoxes.append(...createBoxes(inputAmount.value));
+  // }
+  if (inputAmount.value >= 0 && inputAmount.value <= 100) {
     divBoxes.append(...createBoxes(inputAmount.value));
   }
 }
